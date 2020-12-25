@@ -2,11 +2,11 @@
 # Contributor: Ray Rashif <schiv@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
-pkgname=opencv-cuda
+pkgname=opencv-cuda-qt
 pkgver=4.5.2
 pkgrel=1
 provides=(opencv opencv-samples)
-conflicts=(opencv opencv-samples)
+conflicts=(opencv opencv-samples opencv-cuda)
 pkgdesc="Open Source Computer Vision Library with CUDA support"
 arch=(x86_64)
 license=(BSD)
@@ -46,11 +46,12 @@ build() {
     -DWITH_OPENCL=ON \
     -DWITH_OPENGL=ON \
     -DWITH_TBB=ON \
+    -DWITH_QT=ON \
     -DOpenGL_GL_PREFERENCE=GLVND \
     -DBUILD_WITH_DEBUG_INFO=OFF \
     -DBUILD_TESTS=OFF \
     -DBUILD_PERF_TESTS=OFF \
-    -DBUILD_EXAMPLES=ON \
+    -DBUILD_EXAMPLES=OFF \
     -DINSTALL_C_EXAMPLES=ON \
     -DINSTALL_PYTHON_EXAMPLES=ON \
     -DCMAKE_INSTALL_PREFIX=/usr \
